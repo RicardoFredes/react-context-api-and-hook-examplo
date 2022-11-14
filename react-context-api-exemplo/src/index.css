@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 16px;
+  font-family: sans-serif;
+  background-color: gainsboro;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.notifications {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.notification {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem 3rem 1rem 1rem;
+  position: relative;
+  max-width: 100%;
+  min-width: 180px;
+
+  opacity: 0;
+  transform: translateX(100%);
+
+  animation: show-notification-animation ease 350ms 1 forwards;
+}
+
+.notification--closing {
+  animation: closing-notification-animation ease 250ms 1 forwards;
+}
+
+.notification__close-button {
+  cursor: pointer;
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+}
+.notification__close-button:hover {
+  background-color: gainsboro;
+}
+
+.notification__title {
+  font-size: 1rem;
+}
+.notification__description {
+  font-size: 0.9rem;
+}
+
+.notification--info {
+  background-color: lightseagreen;
+}
+.notification--error {
+  background-color: lightcoral;
+}
+.notification--success {
+  background-color: lightgreen;
+}
+.notification--warning {
+  background-color: goldenrod;
+}
+
+@keyframes show-notification-animation {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes closing-notification-animation {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
